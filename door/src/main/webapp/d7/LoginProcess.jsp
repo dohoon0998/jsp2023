@@ -27,6 +27,7 @@ String password = request.getParameter("password");
 	pstmt.setString(1, username);
 	pstmt.setString(2, password);
 	ResultSet rs = pstmt.executeQuery();
+	boolean isLogin = false;
 	while(rs.next()) {
 		String id = rs.getString(1);
 		String pass = rs.getString(2);
@@ -34,7 +35,13 @@ String password = request.getParameter("password");
 		java.sql.Date regidate = rs.getDate("regiDate");
 		
 		out.println(String.format("%s %s %s %s", id, pass, name, regidate));
+		isLogin = true;
+		session.setAttribute("id", id);
+		
 	}
-	%>
+	if(!isLogin) {
+		session.removeAttribute("id");
+	}
+	%><a href="./Login.jsp">로그인</a>
 </body>
 </html>

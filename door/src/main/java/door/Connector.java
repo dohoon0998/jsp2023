@@ -9,7 +9,10 @@ public class Connector {
 		// 드라이버 로딩
 		Class.forName("org.mariadb.jdbc.Driver");
 		// 커넥션 맺기
-		return DriverManager.getConnection("jdbc:mariadb://localhost:3307/devdb", "devuser", "devpass");
+		String url = "jdbc:mariadb://localhost:3307/devdb";
+		String user = "devuser";
+		String password = "devpass";
+		return DriverManager.getConnection(url, user, password);
 	}
 
 }

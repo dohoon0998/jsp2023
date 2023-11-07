@@ -10,7 +10,7 @@
 <body>
     <div class="login-container">
         <h2>로그인</h2>
-        <form id="loginForm" action="LoginProcess.jsp">
+        <form id="loginForm" action="LoginProcess.jsp" method="post">
             <div class="form-group">
                 <label for="username">사용자 이름</label>
                 <input type="text" id="username" name="username" required>
@@ -29,7 +29,7 @@
         <div id="message" style="color: #ff0000;"></div>
     </div>
 
-    <script>
+    <!-- <script>
         document.getElementById("loginForm").addEventListener("submit", function (e) {
             e.preventDefault();
             const username = document.getElementById("username").value;
@@ -42,6 +42,6 @@
                 document.getElementById("message").innerHTML = "로그인 실패. 사용자 이름 또는 비밀번호를 확인하세요.";
             }
         });
-    </script>
+    </script> -->
 </body>
 </html>

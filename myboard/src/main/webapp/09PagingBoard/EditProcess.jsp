@@ -1,5 +1,6 @@
-<%@ page import="model1.board.boardDAO"%>
-<%@ page import="model1.board.BoardDTO"%>
+
+<%@page import="model1.board.boardDAO"%>
+<%@page import="model1.board.boardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp"%>
@@ -10,13 +11,13 @@ String title = request.getParameter("title");
 String content = request.getParameter("content");
 
 // DTO에 저장
-BoardDTO dto = new BoardDTO();
+boardDTO dto = new boardDTO();
 dto.setNum(num);
 dto.setTitle(title);
 dto.setContent(content);
 
 // DB에 반영
-boardDAO dao = new boardDAO(application);
+boardDAO dao = new boardDAO();
 int affected = dao.updateEdit(dto);
 dao.close();
 

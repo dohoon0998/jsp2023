@@ -78,7 +78,7 @@ public class boardDAO extends DBConnPool {
 	    
 	    // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
 	    public List<boardDTO> selectListPage(Map<String, Object> map) {
-	        List<boardDTO> bbs = new Vector<boardDTO>();  // 결과(게시물 목록)를 담을 변수
+	        List<boardDTO> bbs = new Vector<>();  // 결과(게시물 목록)를 담을 변수
 	        
 	        // 쿼리문 템플릿  
 	        String query = " SELECT * FROM ( "

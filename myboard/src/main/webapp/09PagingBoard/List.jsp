@@ -1,14 +1,15 @@
+<%@page import="model1.board.boardDTO"%>
+<%@page import="model1.board.boardDAO"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
-<%@ page import="model1.board.boardDAO"%>
-<%@ page import="model1.board.BoardDTO"%>
+
 <%@ page import="utils.BoardPage"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 // DAO를 생성해 DB에 연결
-boardDAO dao = new boardDAO(application);
+boardDAO dao = new boardDAO();
 
 // 사용자가 입력한 검색 조건을 Map에 저장
 Map<String, Object> param = new HashMap<String, Object>();
@@ -40,7 +41,7 @@ param.put("start", start);
 param.put("end", end);
 /*** 페이지 처리 end ***/
 
-List<BoardDTO> boardLists = dao.selectListPage(param);  // 게시물 목록 받기
+List<boardDTO> boardLists = dao.selectListPage(param);  // 게시물 목록 받기
 dao.close();  // DB 연결 닫기
 %>
 <!DOCTYPE html>
@@ -50,7 +51,7 @@ dao.close();  // DB 연결 닫기
 <title>회원제 게시판</title>
 </head>
 <body>
-    <jsp:include page="../Common/Link.jsp" />  <!-- 공통 링크 -->
+    <jsp:include page="../common/Link.jsp" />  <!-- 공통 링크 -->
 
     <h2>목록 보기(List) - 현재 페이지 : <%= pageNum %> (전체 : <%= totalPage %>)</h2>
     <!-- 검색폼 -->
@@ -94,7 +95,7 @@ else {
     // 게시물이 있을 때
     int virtualNum = 0;  // 화면상에서의 게시물 번호
     int countNum = 0;
-    for (BoardDTO dto : boardLists)
+    for (boardDTO dto : boardLists)
     {
         // virtualNumber = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
         virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);

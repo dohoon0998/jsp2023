@@ -1,12 +1,13 @@
+<%@page import="model1.board.boardDTO"%>
 <%@ page import="model1.board.boardDAO"%>
-<%@ page import="model1.board.BoardDTO"%>
+<%@ page import="model1.board.boardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp"%> 
 <%
  String num = request.getParameter("num");  // 일련번호 받기 
- boardDAO dao = new boardDAO(application);  // DAO 생성
- BoardDTO dto = dao.selectView(num);        // 게시물 가져오기 
+ boardDAO dao = new boardDAO();  // DAO 생성
+ boardDTO dto = dao.selectView(num);        // 게시물 가져오기 
  String sessionId = session.getAttribute("UserId").toString(); // 로그인 ID 얻기 
  if (!sessionId.equals(dto.getId())) {      // 본인인지 확인
      JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
@@ -18,7 +19,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="../Common/Link.jsp" />
+<jsp:include page="../common/Link.jsp" />
 <title>회원제 게시판</title>
 <script type="text/javascript">
 function validateForm(form) {  // 폼 내용 검증
@@ -36,7 +37,7 @@ function validateForm(form) {  // 폼 내용 검증
 </script>
 </head>
 <body>
-<jsp:include page="../Common/Link.jsp" />
+<jsp:include page="../common/Link.jsp" />
 <h2>회원제 게시판 - 수정하기(Edit)</h2>
 <form name="writeFrm" method="post" action="EditProcess.jsp"
       onsubmit="return validateForm(this);">

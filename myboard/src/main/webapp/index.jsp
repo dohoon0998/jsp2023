@@ -24,8 +24,8 @@
     psmt.setString(3, name);
 
     // 쿼리 수행
-    int inResult = psmt.executeUpdate(); 
-    out.println(inResult + "행이 입력되었습니다.");
+ //   int inResult = psmt.executeUpdate(); 
+//    out.println(inResult + "행이 입력되었습니다.");
 
     // 연결 닫기
     jdbc.close(); 

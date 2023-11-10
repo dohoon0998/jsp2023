@@ -1,13 +1,14 @@
+<%@page import="model1.board.boardDTO"%>
 <%@ page import="model1.board.boardDAO"%>
-<%@ page import="model1.board.BoardDTO"%>
+<%@ page import="model1.board.boardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp"%>
 <%
 String num = request.getParameter("num");  // 일련번호 얻기 
 
-BoardDTO dto = new BoardDTO();             // DTO 객체 생성
-boardDAO dao = new boardDAO(application);  // DAO 객체 생성
+boardDTO dto = new boardDTO();             // DTO 객체 생성
+boardDAO dao = new boardDAO();  // DAO 객체 생성
 dto = dao.selectView(num);  // 주어진 일련번호에 해당하는 기존 게시물 얻기
 
 // 로그인된 사용자 ID 얻기

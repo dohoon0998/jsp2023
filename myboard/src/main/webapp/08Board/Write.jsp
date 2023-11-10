@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp"%> <!--로그인 확인-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@ function validateForm(form) {  // 폼 내용 검증
 </script>
 </head>
 <body>
-<jsp:include page="../Common/Link.jsp" />
+<jsp:include page="../common/Link.jsp" />
 <h2>회원제 게시판 - 글쓰기(Write)</h2>
 <form name="writeFrm" method="post" action="WriteProcess.jsp"
       onsubmit="return validateForm(this);">

@@ -1,13 +1,14 @@
-<%@ page import="model1.board.boardDAO"%>
-<%@ page import="model1.board.BoardDTO"%>
+
+<%@page import="model1.board.boardDTO"%>
+<%@page import="model1.board.boardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 String num = request.getParameter("num");  // 일련번호 받기 
 
-boardDAO dao = new boardDAO(application);  // DAO 생성 
+boardDAO dao = new boardDAO();  // DAO 생성 
 dao.updateVisitCount(num);                 // 조회수 증가 
-BoardDTO dto = dao.selectView(num);        // 게시물 가져오기 
+boardDTO dto = dao.selectView(num);        // 게시물 가져오기 
 dao.close();                               // DB 연결 해제
 %>
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ function deletePost() {
 </script>
 </head>
 <body>
-<jsp:include page="../Common/Link.jsp" />
+<jsp:include page="../common/Link.jsp" />
 <h2>회원제 게시판 - 상세 보기(View)</h2>
 <form name="writeFrm">
     <input type="hidden" name="num" value="<%= num %>" />  <!-- 공통 링크 -->
